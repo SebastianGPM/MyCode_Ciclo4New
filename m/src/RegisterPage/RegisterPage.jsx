@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
-import RegisterStyles from "./RegisterStyles.css"
+
 
 function RegisterPage() {
 
@@ -26,14 +26,18 @@ function RegisterPage() {
                                 <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
                                 <label htmlFor="floatingInput">Correo electrónico</label>
                             </div>
-                            <div className="form-floating mb-3">
-                                <input type="email" className="form-control" id="floatingInput" placeholder="Pedro José López Hurtado" />
-                                <label htmlFor="floatingInput">Rol</label>
-                            </div>
+
                             <div className="form-floating">
                                 <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
                                 <label htmlFor="floatingPassword">Contraseña</label>
                             </div>
+                            <br />
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Elegir rol</option>
+                                <option value="1">Estudiante</option>
+                                <option value="2">Líder</option>
+                                <option value="3">Adiministrador</option>
+                            </select>
 
                             <div className="d-flex justify-content-between">
                                 <div className="card-body">

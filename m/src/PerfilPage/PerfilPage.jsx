@@ -1,5 +1,4 @@
 import React from "react";
-import ModificarPerfil from "../ModificarPerfil/ModificarPerfil";
 import { Link } from "react-router-dom";
 
 function PerfilPage() {
@@ -52,33 +51,25 @@ function PerfilPage() {
                                     <h6 class="card-subtitle mb-2 text-muted">ejemplo@gmail.com</h6>
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col">
-                                    <h6>Contraseña</h6>
-                                </div>
-                                <div className="col">
-                                    <h6 class="card-subtitle mb-2 text-muted">***************</h6>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <br />
-                            <button type="button" class="btn btn-light border-dark">Ir a la página anterior</button>
+                            
+                            <Link to="/proyecto" type="button" class="btn btn-light border-dark">Ver todos los proyectos</Link>
                         </div>
 
 
                         <div className="col">
-                            <br />
+                            
                             <Link to="/EditarPefil" type="button" class="btn btn-secondary">Modificar datos personales</Link>
                         </div>
 
                     </div>
-                          <br />                  
+                          <br />               
                     <div className="row text">
                             <br />
-                            <Link to="/MisProyectos" type="button" class="btn btn-dark">Ver proyectos</Link>
+                            <Link to="/MisProyectos" type="button" class="btn btn-dark">Ver mis proyectos</Link>
                         </div>
                 </div>
                 <div className="col-3">

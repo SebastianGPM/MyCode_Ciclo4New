@@ -1,7 +1,7 @@
 // https://cdn-icons-png.flaticon.com/512/56/56749.png
 import React from "react";
 import { Link } from "react-router-dom"
-import { Fragment } from "react"
+
 
 function AvancesPage() {
 

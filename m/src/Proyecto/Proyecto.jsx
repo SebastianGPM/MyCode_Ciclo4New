@@ -118,6 +118,13 @@ class Proyecto extends Component {
 
           </div>
         </div>
+        <div className="d-flex justify-content-between">
+          <div className="card-body text-center">
+            <Link type="button" className="btn btn-dark border-dark"
+              to="/Inscripciones" >Inscripciones</Link>
+
+          </div>
+        </div>
       </React.Fragment>
 
     );

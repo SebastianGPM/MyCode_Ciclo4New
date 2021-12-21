@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
+import RegisterStyles from "./RegisterStyles.css"
 
 function RegisterPage() {
 
@@ -36,7 +37,7 @@ function RegisterPage() {
 
                             <div className="d-flex justify-content-between">
                                 <div className="card-body">
-                                    <Link type="button" className="btn btn-dark border-dark"
+                                    <Link type="button" className="btn btn-light border-dark"
                                         to="/" >Atrás</Link>
                                 </div>
 

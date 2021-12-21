@@ -1,0 +1,121 @@
+type Usuario{
+    _id: ID!
+    nombre: String
+    correo: String
+    contrasena: String
+    rol: String
+    estado: String
+    proyectoInscrito: String
+}
+
+type Proyecto{
+    _id: ID!
+    nombreProyecto: String
+    descripcionProyecto: String
+    objetivoGeneral: String
+    objetivosEspecificos: String
+    estado: String
+    fase: String
+    presupuesto: String
+    avance: String
+}
+
+
+type Query{
+    ping: String!
+    proyectos: [Proyecto]
+
+    "HU_002Autentica un Usuario"
+    getUsuarioAuth(correo: String!, contrasena: String!): Usuario
+
+    "HU_004 Listar usuarios activos o no"
+    getUsuarios: [Usuario]
+
+    "HU_006 y HU_013 Devuelve los Proyectos activos y no"
+    getProyectos: [Proyecto]
+
+    "HU_010 Listar estudiantes Activos y no"
+    getUsuariosEstudiantes: [Usuario]
+
+    "Devuelve un Proyecto"
+    getProyecto(id: ID!): Proyecto
+
+    "Devuelve Proyectos Activos"
+    getProyectosActivos: [Proyecto]
+}
+
+
+type Mutation{
+    "HU_012 Crea un Proyecto"
+    createProyecto(
+        nombreProyecto: String
+        descripcionProyecto: String
+        objetivoGeneral: String
+        objetivosEspecificos: String
+        estado: String
+        fase: String
+        presupuesto: String
+    ): Proyecto
+
+
+
+    "HU_001 Crea un Usuario"
+    createUsuario(    
+        nombre: String
+        correo: String
+        contrasena: String
+        rol: String
+        estado: String
+        proyectoInscrito: String
+    ): Usuario
+
+    "HU_003 Editar Usuario"
+    editUsuario(
+        _id: ID!
+        nombre: String
+        correo: String
+        contrasena: String
+        rol: String
+        estado: String
+        proyectoInscrito: String
+    ): Usuario
+
+    "HU_005 Cambiar Estado Usuario"
+    editEstadoUsuario(
+        _id: ID!
+        estado: String
+    ): Usuario
+
+    "HU_007 y HU_008 Cambiar Estado Proyect"
+    editEstadoProyecto(
+        _id: ID!
+        estado: String
+    ): Proyecto
+
+    "HU_009 Cambiar Fase Proyect"
+    editFaseProyecto(
+        _id: ID!
+        fase: String
+    ): Proyecto
+
+    "HU_011 Cambiar Estado Estudiante"
+    editEstadoEstudiante(
+        _id: ID!
+        estado: String
+    ): Usuario
+
+
+    "HU_014 Editar Proyecto"
+    editProyecto(
+        _id: ID!
+        nombreProyecto: String
+        descripcionProyecto: String
+        objetivoGeneral: String
+        objetivosEspecificos: String
+        presupuesto: String
+    ): Proyecto
+
+}
+
+
+

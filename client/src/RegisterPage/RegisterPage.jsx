@@ -1,7 +1,40 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
+import{useMutation} from '@apollo/react-hooks'
+import {gql} from 'apollo-boost'
 
-function RegisterPage() {
+
+const CREATE_USUARIO = gql`
+  
+    mutation CreateUsuario(  
+
+        $nombre: String,
+        $correo: String,
+        $contrasena: String,
+        $rol: String,
+        $estado: String
+    ){
+        createUsuario(
+            nombre: $nombre,
+            correo: $correo,
+            contrasena: $contrasena,
+            rol: $rol,
+            estado: $estado
+        ){
+            _id
+        }
+    }
+`;
+
+const RegisterPage = () => {
+
+    const [nombre, setnombre] = useState('')
+    const [correo, setcorreo] = useState('')
+    const [contrasena, setcontrasena] = useState('')
+    const [rol, setrol] = useState('')
+    const [estado, setestado] = useState('false')
+
+    const [createUsuario] = useMutation(CREATE_USUARIO)
 
     return (
         <Fragment>
@@ -11,26 +44,56 @@ function RegisterPage() {
                         <br /><br />
                         <div className="container">
 
-                            <h1>Registro</h1>
-                            <br />
+                        <h1>Registro</h1>
+                        <br />
+
+                        <form onSubmit={e => {
+                            // e.preventDefault();
+                            console.log(nombre);
+                            createUsuario({variables:{nombre,correo,contrasena,rol,estado='false'}})
+                        }}>
+
+
+
                             <div className="form-floating mb-3">
-                                <input type="email" className="form-control" id="floatingInput" placeholder="Pedro José López Hurtado" />
+                                <input type="text" className="form-control" id="floatingInput" placeholder="Pedro José López Hurtado" 
+                                onChange = {e => setnombre(e.target.value)}
+                                value = {nombre}
+                                />
                                 <label htmlFor="floatingInput">Nombre completo</label>
                             </div>
+
+
+
                             <div className="form-floating mb-3">
-                                <input type="email" className="form-control" id="floatingInput" placeholder="30120304556" />
-                                <label htmlFor="floatingInput">Documento de identidad</label>
-                            </div>
-                            <div className="form-floating mb-3">
-                                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+                                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" 
+                                onChange = {e => setcorreo(e.target.value)}
+                                value = {correo}
+                                />
                                 <label htmlFor="floatingInput">Correo electrónico</label>
                             </div>
+
                             <div className="form-floating mb-3">
-                                <input type="email" className="form-control" id="floatingInput" placeholder="Pedro José López Hurtado" />
-                                <label htmlFor="floatingInput">Rol</label>
+
+                                <label>Rol</label>
+
+                                <select
+                                    name="rol" 
+                                    className="form-select"
+                                    onChange = {e => setrol(e.target.value)}
+                                    value = {rol}
+                                    aria-label="Default select example">
+                                    <option selected>Seleccione una opción</option>
+                                    <option value="admin">Administrador</option>
+                                    <option value="lider">Lider</option>
+                                    <option value="estudiante">Estudiante</option>
+                                </select>
+
                             </div>
                             <div className="form-floating">
-                                <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+                                <input type="password" className="form-control" id="floatingPassword" placeholder="Password" 
+                                onChange = {e => setcontrasena(e.target.value)}
+                                value = {contrasena}/>
                                 <label htmlFor="floatingPassword">Contraseña</label>
                             </div>
 
@@ -40,15 +103,17 @@ function RegisterPage() {
                                         to="/" >Atrás</Link>
                                 </div>
 
-                                <div className="card-body text-end">
+                                <button type="submit" className="btn btn-success">Guardar</button>
+
+                               {/*  <div className="card-body text-end">
                                     <Link type="button" className="btn btn-dark border-dark"
                                         to="/Ventas" >Guardar</Link>
 
-                                </div>
+                                </div> */}
                             </div>
 
+                        </form>
                         </div>
-
                     </div>
 
 

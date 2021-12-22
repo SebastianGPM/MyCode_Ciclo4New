@@ -66,7 +66,6 @@ type Mutation{
         contrasena: String
         rol: String
         estado: String
-        proyectoInscrito: String
     ): Usuario
 
     "HU_003 Editar Usuario"

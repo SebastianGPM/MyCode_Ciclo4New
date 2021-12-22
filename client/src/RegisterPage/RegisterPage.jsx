@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Component, useState } from 'react'
 import { Link } from 'react-router-dom';
 import{useMutation} from '@apollo/react-hooks'
 import {gql} from 'apollo-boost'
@@ -37,7 +37,7 @@ const RegisterPage = () => {
     const [createUsuario] = useMutation(CREATE_USUARIO)
 
     return (
-        <Fragment>
+        
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6 align-items-center d-flex">
@@ -50,7 +50,7 @@ const RegisterPage = () => {
                         <form onSubmit={e => {
                             // e.preventDefault();
                             console.log(nombre);
-                            createUsuario({variables:{nombre,correo,contrasena,rol,estado='false'}})
+                            createUsuario({variables:{nombre,correo,contrasena,rol,estado}})
                         }}>
 
 
@@ -130,7 +130,7 @@ const RegisterPage = () => {
 
                 </div>
             </div>
-        </Fragment>
+        
     )
 }
 

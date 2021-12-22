@@ -56,7 +56,7 @@ const RegisterPage = () => {
 
 
                             <div className="form-floating mb-3">
-                                <input type="text" className="form-control" id="floatingInput" placeholder="Pedro José López Hurtado" 
+                                <input type="text" className="form-control" id="" placeholder="Pedro José López Hurtado" 
                                 onChange = {e => setnombre(e.target.value)}
                                 value = {nombre}
                                 />

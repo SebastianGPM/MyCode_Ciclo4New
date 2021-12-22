@@ -3,6 +3,7 @@ const {ObjectId} = require('mongodb') */
 
 /* importar modelo */
 import Proyecto from "../../models/Proyecto";
+import Usuario from "../../models/Usuario";
 
 const Query = {
 
@@ -12,7 +13,10 @@ const Query = {
 
     proyectos: async ()=>{
         return await Proyecto.find()
+    },
 
+    usuarios: async ()=>{
+        return await Usuario.find()
     }
 
 }

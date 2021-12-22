@@ -1,48 +1,30 @@
 import React, {Component} from "react";
 import Toolbar from "../layout/toolbar";
 import {Link} from "react-router-dom"
+import{useQuery} from '@apollo/react-hooks'
+import {gql} from 'apollo-boost'
 
-class Usuario extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { 
-      posts:[]
+const GET_USUARIOS = gql`
+  {
+    usuarios{
+      _id
+      nombre
+      correo
+      contrasena
+      rol
+      estado
     }
   }
+`;
 
-  componentDidMount(){
-    this.getPosts();
-  }
+const Usuario = () => {
 
-  getPosts(){
-    
-  }
+  const {loading, error, data} = useQuery(GET_USUARIOS)
+  if(loading) return <p>Loading...</p>
+  if(error) return <p>Error...</p>
+  console.log('datos:'+data);
 
-  onDelete = (id) => {
-    // alert(id)
-   
-  }
-
-
-  filterContent(posts, searchTerm){
-    const resultado = posts.filter((post) => 
-      post.nombre.toLowerCase().includes(searchTerm) ||
-      post.correo.toLowerCase().includes(searchTerm) ||
-      post.estado.toLowerCase().includes(searchTerm) ||
-      post.rol.toLowerCase().includes(searchTerm)
-    );
-    this.setState({posts: resultado});
-  }
-
-  handleBusqueda = (e) => {
-    const searchTerm = e.currentTarget.value;
-
-    
-  }
-
-
-  render() { 
+  
     return ( 
       <React.Fragment>
       
@@ -54,7 +36,6 @@ class Usuario extends Component {
             type="search"
             placeholder="Buscar"
             name="searchTerm"
-            onChange={this.handleBusqueda}
           ></input>
 
         </div>
@@ -68,46 +49,46 @@ class Usuario extends Component {
               <th scope="col">Correo</th>
               <th scope="col">Rol</th>
               <th scope="col">Estado</th>
-              <th scope="col">Accion</th>
+              <th scope="col">Accionp</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.posts.map((post, index) => (
-              <tr>
+            {data.usuarios.map((usuario, index) => (
+              <tr key={usuario._id}>
                 <th scope="row">{index}</th>
-                <td>{post.nombre}</td>
-                <td>{post.correo}</td>
-                <td>{post.rol}</td>
-                <td>{post.estado}</td>
+                <td>{usuario.nombre}</td>
+                <td>{usuario.correo}</td>
+                <td>{usuario.rol}</td>
+                <td>{usuario.estado}</td>
                 <td>
-                  <a className="btn btn-warning" href={`/update/${post._id}`}>
+                  <a className="btn btn-warning" href={`/update/${usuario._id}`}>
                     <i className="fas fa-edit"></i>Editar
                   </a>
                   &nbsp;
-                  <a 
+                 {/*  <a 
                     className="btn btn-danger" 
                     href="#" 
-                    onClick={() => this.onDelete(post._id)}>
+                    onClick={() => this.onDelete(usuario._id)}>
 
                     <i className="fas fa-trast"></i>Eliminar
-                  </a>
+                  </a> */}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="d-flex justify-content-between">
+      {/* <div className="d-flex justify-content-between">
           <div className="card-body text-center">
             <Link type="button" className="btn btn-dark border-dark"
               to="/CreateUsuario" >Crear nuevo usuario</Link>
 
           </div>
-        </div>
+        </div> */}
       </React.Fragment>
     
      );
   }
-}
+
  
 export default Usuario;

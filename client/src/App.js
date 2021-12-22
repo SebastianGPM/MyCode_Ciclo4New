@@ -12,7 +12,8 @@ import EditarProyecto from './Proyecto/EditarProyecto';
 
 import Usuario from './usuario/Usuario';
 import CreateUsuario from './usuario/CreateUsuario';
-
+import AvancesPage from './AvancesPage/AvancesPage';
+import InscripcionesPage from './InscipcionesPage/InscripcionesPage';
 
 function App() {
   return (
@@ -27,6 +28,11 @@ function App() {
         <Route exact path="/CreateUsuario" element={<CreateUsuario/>}/>
 
         <Route exact path="/Register" element={<RegisterPage/>}/>
+        <Route exact path="/Perfil" element={<PerfilPage/>}/>
+        <Route exact path="/EditarPefil" element={<ModificarPerfil/>}/>
+        <Route exact path="/updateProy/:id" element={<EditarProyecto/>}/>
+        <Route exact path="/Avances" element={<AvancesPage/>}/>
+        <Route exact path="/Inscripciones" element={<InscripcionesPage/>}/>
       </Routes>
     </Router>
   );

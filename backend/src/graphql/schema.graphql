@@ -24,6 +24,7 @@ type Proyecto{
 type Query{
     ping: String!
     proyectos: [Proyecto]
+    usuarios: [Usuario]
 
     "HU_002Autentica un Usuario"
     getUsuarioAuth(correo: String!, contrasena: String!): Usuario

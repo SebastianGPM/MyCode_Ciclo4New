@@ -41,7 +41,7 @@ const CreateProyectoFr = () => {
     const [fase, setfase] = useState('')
     const [presupuesto, setpresupuesto] = useState('')
 
-    const [createProyectoM] = useMutation(CREATE_PROYECTO)
+    const [createProyecto] = useMutation(CREATE_PROYECTO)
 
 
 
@@ -55,9 +55,9 @@ const CreateProyectoFr = () => {
                 <h1>Crear Nuevo Proyecto</h1>
                 
                     <form onSubmit={e => {
-                        e.preventDefault();
+                        // e.preventDefault();
                         console.log(nombreProyecto);
-                        createProyectoM({variables:{nombreProyecto,descripcionProyecto,objetivoGeneral,objetivosEspecificos,estado,fase,presupuesto}})
+                        createProyecto({variables:{nombreProyecto,descripcionProyecto,objetivoGeneral,objetivosEspecificos,estado,fase,presupuesto}})
                     }}>
 
                         <div className="form-group mb-3">

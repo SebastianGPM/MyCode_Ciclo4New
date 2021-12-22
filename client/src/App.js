@@ -10,6 +10,9 @@ import Proyecto from './Proyecto/Proyecto';
 import CreateProyectoFr from './Proyecto/CreateProyectoFr';
 import EditarProyecto from './Proyecto/EditarProyecto';
 
+import Usuario from './usuario/Usuario';
+import CreateUsuario from './usuario/CreateUsuario';
+
 
 function App() {
   return (
@@ -19,6 +22,11 @@ function App() {
         <Route exact path="/" element={<LoginPage/>}/>
         <Route exact path="/proyecto" element={<Proyecto/>}/>
         <Route exact path="/addProyecto" element={<CreateProyectoFr/>}/>
+
+        <Route exact path="/Usuario" element={<Usuario/>}/>
+        <Route exact path="/CreateUsuario" element={<CreateUsuario/>}/>
+
+        <Route exact path="/Register" element={<RegisterPage/>}/>
       </Routes>
     </Router>
   );
